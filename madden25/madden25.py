@@ -30,13 +30,111 @@ playero_position = [0, 250]
 
 playero_body = [[0, 250]]
 
-
 compx_position = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
 
 compx_body = [[0, 250]]
 
-
+field_lines_body = [[60, 60],
+               [60, 70],
+               [60, 80],
+               [60, 90],
+               [60, 100],
+               [120, 60],
+               [120, 70],
+               [120, 80],
+               [120, 90],
+               [120, 100],
+               [180, 60],
+               [180, 70],
+               [180, 80],
+               [180, 90],
+               [180, 100],
+               [240, 60],
+               [240, 70],
+               [240, 80],
+               [240, 90],
+               [240, 100],
+               [300, 60],
+               [300, 70],
+               [300, 80],
+               [300, 90],
+               [300, 100],
+               [360, 60],
+               [360, 70],
+               [360, 80],
+               [360, 90],
+               [360, 100],
+               [420, 60],
+               [420, 70],
+               [420, 80],
+               [420, 90],
+               [420, 100],
+               [480, 60],
+               [480, 70],
+               [480, 80],
+               [480, 90],
+               [480, 100],
+               [540, 60],
+               [540, 70],
+               [540, 80],
+               [540, 90],
+               [540, 100],
+               [600, 60],
+               [600, 70],
+               [600, 80],
+               [600, 90],
+               [600, 100],
+               [660, 60],
+               [660, 70],
+               [660, 80],
+               [660, 90],
+               [660, 100],
+               [720, 60],
+               [720, 70],
+               [720, 80],
+               [720, 90],
+               [720, 100],
+               [780, 60],
+               [780, 70],
+               [780, 80],
+               [780, 90],
+               [780, 100],
+               [840, 60],
+               [840, 70],
+               [840, 80],
+               [840, 90],
+               [840, 100],
+               [900, 60],
+               [900, 70],
+               [900, 80],
+               [900, 90],
+               [900, 100],
+               [960, 60],
+               [960, 70],
+               [960, 80],
+               [960, 90],
+               [960, 100],
+               [1020, 60],
+               [1020, 70],
+               [1020, 80],
+               [1020, 90],
+               [1020, 100],
+               [1080, 60],
+               [1080, 70],
+               [1080, 80],
+               [1080, 90],
+               [1080, 100],
+               [1140, 60],
+               [1140, 70],
+               [1140, 80],
+               [1140, 90],
+               [1140, 100],
+               [1200, 60],
+               [1200, 70],
+               [1200, 80],
+               [1200, 90],
+               [1200, 100],]
 
 # setting default playero direction
 direction = 'RIGHT'
@@ -89,12 +187,6 @@ def game_over():
     quit()
 
 
-
-if compx_direction == 'RIGHT':
-    impx = pygame.image.load("playerx_rams.png").convert()
-elif compx_direction == 'LEFT':
-    impx = pygame.image.load("playerx_rams_flip.png").convert()
-
 while True:
     
  
@@ -146,6 +238,13 @@ while True:
     game_window.fill(black)
     # game_window.blit(bg, (0, 0))
 
+    for pos in field_lines_body:
+        pygame.draw.rect(game_window, white,
+                         pygame.Rect(pos[0] + 40, pos[1], 10, 10))
+        
+    for pos in field_lines_body:
+        pygame.draw.rect(game_window, white,
+                         pygame.Rect(pos[0] + 40, pos[1] + 550, 10, 10))
     
     
     for pos in playero_body:
@@ -156,8 +255,6 @@ while True:
         game_window.blit(imp, pygame.Rect(pos[0], pos[1], 10, 10))
         pygame.display.flip()
 
-    # pygame.draw.rect(game_window, white, pygame.Rect(
-    #     compx_position[0], compx_position[1], 10, 10))
     
     if compx_position[0] > playero_position[0]:
         compx_position[0] -= 5
@@ -175,6 +272,11 @@ while True:
 
 
     for pos in compx_body:
+        if compx_direction == 'RIGHT':
+            impx = pygame.image.load("playerx_rams.png").convert()
+        elif compx_direction == 'LEFT':
+            impx = pygame.image.load("playerx_rams_flip.png").convert()
+
         game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
         pygame.display.flip()
 
@@ -185,7 +287,7 @@ while True:
         game_over()
 
     # displaying score continuously
-    show_score(1, white, 'times new roman', 20)
+    # show_score(1, white, 'times new roman', 30)
 
     # Refresh game screen
     pygame.display.update()
