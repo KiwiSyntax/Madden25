@@ -3,7 +3,7 @@ import pygame
 import time
 import random
 
-playero_speed = 15
+playero_speed = 14
 
 # Window size
 window_x = 1368
@@ -336,59 +336,119 @@ while True:
 
     #making the computer follow the player by coordinants 
     if compx_position[0] > playero_position[0]:
-        compx_position[0] -= random.randint(5,8)
+        if yardline < 50:
+            compx_position[0] -= random.randint(5,8)
+        else:
+            compx_position[0] -= random.randint(7,10)
         compx_direction = 'LEFT'
     if compx_position[0] < playero_position[0]:
-        compx_position[0] += random.randint(5,8)
+        if yardline < 50:
+            compx_position[0] += random.randint(5,8)
+        else:
+            compx_position[0] += random.randint(7,10)
         compx_direction = 'RIGHT'
     if compx_position[1] > playero_position[1]:
-        compx_position[1] -= random.randint(5,8)
+        if yardline < 50:
+            compx_position[1] -= random.randint(5,8)
+        else:
+            compx_position[1] -= random.randint(7,10)
     if compx_position[1] < playero_position[1]:
-        compx_position[1] += random.randint(5,8)
+        if yardline < 50:
+            compx_position[1] += random.randint(5,8)
+        else:
+            compx_position[1] += random.randint(7,10)
 
     if compx1_position[0] > playero_position[0]:
-        compx1_position[0] -= random.randint(5,8)
+        if yardline < 50:
+            compx1_position[0] -= random.randint(5,8)
+        else:
+            compx1_position[0] -= random.randint(7,10)
         compx1_direction = 'LEFT'
     if compx1_position[0] < playero_position[0]:
-        compx1_position[0] += random.randint(5,8)
+        if yardline < 50:
+            compx1_position[0] += random.randint(5,8)
+        else:
+            compx1_position[0] += random.randint(7,10)
         compx1_direction = 'RIGHT'
     if compx1_position[1] > playero_position[1]:
-        compx1_position[1] -= random.randint(5,8)
+        if yardline < 50:
+            compx1_position[1] -= random.randint(5,8)
+        else:
+            compx1_position[1] -= random.randint(7,10)
     if compx1_position[1] < playero_position[1]:
-        compx1_position[1] += random.randint(5,8)
+        if yardline < 50:
+            compx1_position[1] += random.randint(5,8)
+        else:
+            compx1_position[1] += random.randint(7,10)
 
     if compx2_position[0] > playero_position[0]:
-        compx2_position[0] -= random.randint(5,8)
+        if yardline < 50:
+            compx2_position[0] -= random.randint(5,8)
+        else:
+            compx2_position[0] -= random.randint(7,10)
         compx2_direction = 'LEFT'
     if compx2_position[0] < playero_position[0]:
-        compx2_position[0] += random.randint(5,8)
+        if yardline < 50:
+            compx2_position[0] += random.randint(5,8)
+        else:
+            compx2_position[0] += random.randint(7,10)
         compx2_direction = 'RIGHT'
     if compx2_position[1] > playero_position[1]:
-        compx2_position[1] -= random.randint(5,8)
+        if yardline < 50:
+            compx2_position[1] -= random.randint(5,8)
+        else:
+            compx2_position[1] -= random.randint(7,10)
     if compx2_position[1] < playero_position[1]:
-        compx2_position[1] += random.randint(5,8)
+        if yardline < 50:
+            compx2_position[1] += random.randint(5,8)
+        else:
+            compx2_position[1] += random.randint(7,10)
 
     if compx3_position[0] > playero_position[0]:
-        compx3_position[0] -= random.randint(5,8)
+        if yardline < 50:
+            compx3_position[0] -= random.randint(5,8)
+        else:
+            compx3_position[0] -= random.randint(7,10)
         compx3_direction = 'LEFT'
     if compx3_position[0] < playero_position[0]:
-        compx3_position[0] += random.randint(5,8)
+        if yardline < 50:
+            compx3_position[0] += random.randint(5,8)
+        else:
+            compx3_position[0] += random.randint(7,10)
         compx3_direction = 'RIGHT'
     if compx3_position[1] > playero_position[1]:
-        compx3_position[1] -= random.randint(5,8)
+        if yardline < 50:
+            compx3_position[1] -= random.randint(5,8)
+        else:
+            compx3_position[1] -= random.randint(7,10)
     if compx3_position[1] < playero_position[1]:
-        compx3_position[1] += random.randint(5,8)
+        if yardline < 50:
+            compx3_position[1] += random.randint(5,8)
+        else:
+            compx3_position[1] += random.randint(7,10)
 
     if compx4_position[0] > playero_position[0]:
-        compx4_position[0] -= random.randint(5,8)
+        if yardline < 50:
+            compx4_position[0] -= random.randint(5,8)
+        else:
+            compx4_position[0] -= random.randint(7,10)
         compx4_direction = 'LEFT'
     if compx4_position[0] < playero_position[0]:
-        compx4_position[0] += random.randint(5,8)
+        if yardline < 50:
+            compx4_position[0] += random.randint(5,8)
+        else:
+            compx4_position[0] += random.randint(7,10)
         compx4_direction = 'RIGHT'
     if compx4_position[1] > playero_position[1]:
-        compx4_position[1] -= random.randint(5,8)
+        if yardline < 50:
+            compx4_position[1] -= random.randint(5,8)
+        else:
+            compx4_position[1] -= random.randint(7,10)
     if compx4_position[1] < playero_position[1]:
-        compx4_position[1] += random.randint(5,8)
+        if yardline < 50:
+            compx4_position[1] += random.randint(5,8)
+        else:
+            compx4_position[1] += random.randint(7,10)
 
     if compx == 1:
         for pos in compx_body:
@@ -444,7 +504,7 @@ while True:
         playero_position[0] = 0
 
     if playero_position[0] > 1300:
-
+                    
         compx = random.randint(0,1)
         compx_position = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
