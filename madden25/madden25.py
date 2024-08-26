@@ -29,13 +29,29 @@ playero_body = [[0, 250]]
 
 compx_position = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
-
-compx_body = [[0, 250]]
-
+compx_body = [random.randrange(1, (window_x//10)) * 10, 
+                  random.randrange(1, (window_y//10)) * 10]
+compx = random.randint(0,1)
 compx1_position = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
-
-compx1_body = [[0, 250]]
+compx1_body = [random.randrange(1, (window_x//10)) * 10, 
+                  random.randrange(1, (window_y//10)) * 10]
+compx1 = random.randint(0,1)
+compx2_position = [random.randrange(1, (window_x//10)) * 10, 
+                  random.randrange(1, (window_y//10)) * 10]
+compx2_body = [random.randrange(1, (window_x//10)) * 10, 
+                  random.randrange(1, (window_y//10)) * 10]
+compx2 = random.randint(0,1)
+compx3_position = [random.randrange(1, (window_x//10)) * 10, 
+                  random.randrange(1, (window_y//10)) * 10]
+compx3_body = [random.randrange(1, (window_x//10)) * 10, 
+                  random.randrange(1, (window_y//10)) * 10]
+compx3 = random.randint(0,1)
+compx4_position = [random.randrange(1, (window_x//10)) * 10, 
+                  random.randrange(1, (window_y//10)) * 10]
+compx4_body = [random.randrange(1, (window_x//10)) * 10, 
+                  random.randrange(1, (window_y//10)) * 10]
+compx4 = random.randint(0,1)
 
 field_lines_body = [[120, 60],
                [120, 70],
@@ -320,33 +336,130 @@ while True:
 
     #making the computer follow the player by coordinants 
     if compx_position[0] > playero_position[0]:
-        compx_position[0] -= 5
+        compx_position[0] -= random.randint(5,8)
         compx_direction = 'LEFT'
-    
     if compx_position[0] < playero_position[0]:
-        compx_position[0] += 5
+        compx_position[0] += random.randint(5,8)
         compx_direction = 'RIGHT'
-
     if compx_position[1] > playero_position[1]:
-        compx_position[1] -= 5
-    
+        compx_position[1] -= random.randint(5,8)
     if compx_position[1] < playero_position[1]:
-        compx_position[1] += 5
+        compx_position[1] += random.randint(5,8)
 
+    if compx1_position[0] > playero_position[0]:
+        compx1_position[0] -= random.randint(5,8)
+        compx1_direction = 'LEFT'
+    if compx1_position[0] < playero_position[0]:
+        compx1_position[0] += random.randint(5,8)
+        compx1_direction = 'RIGHT'
+    if compx1_position[1] > playero_position[1]:
+        compx1_position[1] -= random.randint(5,8)
+    if compx1_position[1] < playero_position[1]:
+        compx1_position[1] += random.randint(5,8)
 
-    for pos in compx_body:
-        if compx_direction == 'RIGHT':
-            impx = pygame.image.load("playerx_rams.png").convert()
-        elif compx_direction == 'LEFT':
-            impx = pygame.image.load("playerx_rams_flip.png").convert()
+    if compx2_position[0] > playero_position[0]:
+        compx2_position[0] -= random.randint(5,8)
+        compx2_direction = 'LEFT'
+    if compx2_position[0] < playero_position[0]:
+        compx2_position[0] += random.randint(5,8)
+        compx2_direction = 'RIGHT'
+    if compx2_position[1] > playero_position[1]:
+        compx2_position[1] -= random.randint(5,8)
+    if compx2_position[1] < playero_position[1]:
+        compx2_position[1] += random.randint(5,8)
 
-        game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
-        pygame.display.flip()
+    if compx3_position[0] > playero_position[0]:
+        compx3_position[0] -= random.randint(5,8)
+        compx3_direction = 'LEFT'
+    if compx3_position[0] < playero_position[0]:
+        compx3_position[0] += random.randint(5,8)
+        compx3_direction = 'RIGHT'
+    if compx3_position[1] > playero_position[1]:
+        compx3_position[1] -= random.randint(5,8)
+    if compx3_position[1] < playero_position[1]:
+        compx3_position[1] += random.randint(5,8)
+
+    if compx4_position[0] > playero_position[0]:
+        compx4_position[0] -= random.randint(5,8)
+        compx4_direction = 'LEFT'
+    if compx4_position[0] < playero_position[0]:
+        compx4_position[0] += random.randint(5,8)
+        compx4_direction = 'RIGHT'
+    if compx4_position[1] > playero_position[1]:
+        compx4_position[1] -= random.randint(5,8)
+    if compx4_position[1] < playero_position[1]:
+        compx4_position[1] += random.randint(5,8)
+
+    if compx == 1:
+        for pos in compx_body:
+            if compx_direction == 'RIGHT':
+                impx = pygame.image.load("playerx_rams.png").convert()
+            elif compx_direction == 'LEFT':
+                impx = pygame.image.load("playerx_rams_flip.png").convert()
+
+            game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
+            pygame.display.flip()
+
+    if compx1 == 1:
+        for pos in compx1_body:
+            if compx1_direction == 'RIGHT':
+                impx = pygame.image.load("playerx_rams.png").convert()
+            elif compx1_direction == 'LEFT':
+                impx = pygame.image.load("playerx_rams_flip.png").convert()
+
+            game_window.blit(impx, pygame.Rect(compx1_position[0], compx1_position[1], 10, 10))
+            pygame.display.flip()
+
+    if compx2 == 1:
+        for pos in compx2_body:
+            if compx2_direction == 'RIGHT':
+                impx = pygame.image.load("playerx_rams.png").convert()
+            elif compx2_direction == 'LEFT':
+                impx = pygame.image.load("playerx_rams_flip.png").convert()
+
+            game_window.blit(impx, pygame.Rect(compx2_position[0], compx2_position[1], 10, 10))
+            pygame.display.flip()
+
+    if compx3 == 1:
+        for pos in compx3_body:
+            if compx3_direction == 'RIGHT':
+                impx = pygame.image.load("playerx_rams.png").convert()
+            elif compx3_direction == 'LEFT':
+                impx = pygame.image.load("playerx_rams_flip.png").convert()
+
+            game_window.blit(impx, pygame.Rect(compx3_position[0], compx3_position[1], 10, 10))
+            pygame.display.flip()
+
+    if compx == 4:
+        for pos in compx4_body:
+            if compx4_direction == 'RIGHT':
+                impx = pygame.image.load("playerx_rams.png").convert()
+            elif compx4_direction == 'LEFT':
+                impx = pygame.image.load("playerx_rams_flip.png").convert()
+
+            game_window.blit(impx, pygame.Rect(compx4_position[0], compx4_position[1], 10, 10))
+            pygame.display.flip()
 
     if playero_position[0] < 0:
         playero_position[0] = 0
 
     if playero_position[0] > 1300:
+
+        compx = random.randint(0,1)
+        compx_position = [random.randrange(1, (window_x//10)) * 10, 
+                  random.randrange(1, (window_y//10)) * 10]
+        compx1 = random.randint(0,1)
+        compx1_position = [random.randrange(1, (window_x//10)) * 10, 
+                  random.randrange(1, (window_y//10)) * 10]
+        compx2 = random.randint(0,1)
+        compx2_position = [random.randrange(1, (window_x//10)) * 10, 
+                  random.randrange(1, (window_y//10)) * 10]
+        compx3 = random.randint(0,1)
+        compx3_position = [random.randrange(1, (window_x//10)) * 10, 
+                  random.randrange(1, (window_y//10)) * 10]
+        compx4 = random.randint(0,1)
+        compx4_position = [random.randrange(1, (window_x//10)) * 10, 
+                  random.randrange(1, (window_y//10)) * 10]
 
         if yardline > 80:
             playero_position[0] = 1000
@@ -356,15 +469,7 @@ while True:
         yardline = yardline + 10
         down = 1
 
-        for pos in compx_body:
-            if compx_direction == 'RIGHT':
-                impx = pygame.image.load("playerx_rams.png").convert()
-            elif compx_direction == 'LEFT':
-                impx = pygame.image.load("playerx_rams_flip.png").convert()
 
-            game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
-            pygame.display.flip()
-    
     if playero_position[1] < 0:
         playero_position[1] = 0
 
