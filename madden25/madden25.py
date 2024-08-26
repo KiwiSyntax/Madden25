@@ -32,6 +32,11 @@ compx_position = [random.randrange(1, (window_x//10)) * 10,
 
 compx_body = [[0, 250]]
 
+compx1_position = [random.randrange(1, (window_x//10)) * 10, 
+                  random.randrange(1, (window_y//10)) * 10]
+
+compx1_body = [[0, 250]]
+
 field_lines_body = [[120, 60],
                [120, 70],
                [120, 80],
@@ -92,7 +97,7 @@ score = 0
 
 down = 1
 
-yardline = 90
+yardline = 10
 
 def show_score(choice, color, font, size):
   
@@ -109,6 +114,14 @@ def show_score(choice, color, font, size):
     
     # displaying text
     game_window.blit(score_surface, score_rect)
+
+    time.sleep(3)
+    
+    pygame.quit()
+    
+    quit()
+
+    
 
 def show_yardline(choice, color, font, size):
   
@@ -342,6 +355,15 @@ while True:
         playero_position[0] = 0
         yardline = yardline + 10
         down = 1
+
+        for pos in compx_body:
+            if compx_direction == 'RIGHT':
+                impx = pygame.image.load("playerx_rams.png").convert()
+            elif compx_direction == 'LEFT':
+                impx = pygame.image.load("playerx_rams_flip.png").convert()
+
+            game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
+            pygame.display.flip()
     
     if playero_position[1] < 0:
         playero_position[1] = 0
