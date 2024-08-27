@@ -3,7 +3,7 @@ import pygame
 import time
 import random
 
-playero_speed = 14
+playero_speed = 15
 
 # Window size
 window_x = 1368
@@ -104,6 +104,165 @@ field_lines_body = [[120, 60],
                [1200, 90],
                [1200, 100]]
 
+
+speedmeter1_body = [[160, 13],
+                    [160, 23],]
+speedmeter2_body = [[160, 13],
+                    [170, 13],
+                    [160, 23],
+                    [170, 23],]
+speedmeter3_body = [[160, 13],
+                    [170, 13],
+                    [180, 13],
+                    [160, 23],
+                    [170, 23],
+                    [180, 23],]
+speedmeter4_body = [[160, 13],
+                    [170, 13],
+                    [180, 13],
+                    [190, 13],
+                    [160, 23],
+                    [170, 23],
+                    [180, 23],
+                    [190, 23]]
+speedmeter5_body = [[160, 13],
+                    [170, 13],
+                    [180, 13],
+                    [190, 13],
+                    [200, 13],
+                    [160, 23],
+                    [170, 23],
+                    [180, 23],
+                    [190, 23],
+                    [200, 23]]
+speedmeter6_body = [[160, 13],
+                    [170, 13],
+                    [180, 13],
+                    [190, 13],
+                    [200, 13],
+                    [210, 13],
+                    [160, 23],
+                    [170, 23],
+                    [180, 23],
+                    [190, 23],
+                    [200, 23],
+                    [210, 23]]
+speedmeter7_body = [[160, 13],
+                    [170, 13],
+                    [180, 13],
+                    [190, 13],
+                    [200, 13],
+                    [210, 13],
+                    [220, 13],
+                    [160, 23],
+                    [170, 23],
+                    [180, 23],
+                    [190, 23],
+                    [200, 23],
+                    [210, 23],
+                    [220, 23]]
+speedmeter8_body = [[160, 13],
+                    [170, 13],
+                    [180, 13],
+                    [190, 13],
+                    [200, 13],
+                    [210, 13],
+                    [220, 13],
+                    [230, 13],
+                    [160, 23],
+                    [170, 23],
+                    [180, 23],
+                    [190, 23],
+                    [200, 23],
+                    [210, 23],
+                    [220, 23],
+                    [230,23]]
+speedmeter9_body = [[160, 13],
+                    [170, 13],
+                    [180, 13],
+                    [190, 13],
+                    [200, 13],
+                    [210, 13],
+                    [220, 13],
+                    [230, 13],
+                    [240, 13],
+                    [160, 23],
+                    [170, 23],
+                    [180, 23],
+                    [190, 23],
+                    [200, 23],
+                    [210, 23],
+                    [220, 23],
+                    [230, 23],
+                    [240, 23],]
+speedmeter10_body = [[160, 13],
+                    [170, 13],
+                    [180, 13],
+                    [190, 13],
+                    [200, 13],
+                    [210, 13],
+                    [220, 13],
+                    [230, 13],
+                    [240, 13],
+                    [250, 13],
+                    [160, 23],
+                    [170, 23],
+                    [180, 23],
+                    [190, 23],
+                    [200, 23],
+                    [210, 23],
+                    [220, 23],
+                    [230, 23],
+                    [240, 23],
+                    [250, 23]]
+speedmeter11_body = [[160, 13],
+                    [170, 13],
+                    [180, 13],
+                    [190, 13],
+                    [200, 13],
+                    [210, 13],
+                    [220, 13],
+                    [230, 13],
+                    [240, 13],
+                    [250, 13],
+                    [260, 13],
+                    [160, 23],
+                    [170, 23],
+                    [180, 23],
+                    [190, 23],
+                    [200, 23],
+                    [210, 23],
+                    [220, 23],
+                    [230, 23],
+                    [240, 23],
+                    [250, 23],
+                    [260, 23]]
+speedmeterMax_body = [[160, 13],
+              [170, 13],
+              [180, 13],
+              [190, 13],
+              [200, 13],
+              [210, 13],
+              [220, 13],
+              [230, 13],
+              [240, 13],
+              [250, 13],
+              [260, 13],
+              [270, 13],
+              [160, 23],
+              [170, 23],
+              [180, 23],
+              [190, 23],
+              [200, 23],
+              [210, 23],
+              [220, 23],
+              [230, 23],
+              [240, 23],
+              [250, 23],
+              [260, 23],
+              [270, 23]
+              ]
+
 # setting default playero direction
 direction = 'RIGHT'
 change_to = direction
@@ -136,6 +295,18 @@ def show_score(choice, color, font, size):
     pygame.quit()
     
     quit()
+
+def show_details(choice, color, font, size):
+  
+    my_font = pygame.font.SysFont('Arial', 30)
+    details_surface = my_font.render(
+        'SPEED:' , True, white)
+    
+    details_rect = details_surface.get_rect()
+    details_rect.midtop = (100, 5)
+    game_window.blit(details_surface, details_rect)
+    pygame.display.flip()
+
 
 def show_yardline(choice, color, font, size):
   
@@ -195,25 +366,13 @@ def show_nextyardline(choice, color, font, size):
 
 
 def downs():
-      
-    # creating font object my_font
+
     my_font = pygame.font.SysFont('Arial', 70)
-    
-    # creating a text surface on which text 
-    # will be drawn
-    game_over_surface = my_font.render('DOWN ' + str(down), True, red)
-    
-    # create a rectangular object for the text 
-    # surface object
-    game_over_rect = game_over_surface.get_rect()
-    
-    # setting position of the text
-    game_over_rect.midtop = (window_x/2, 300)
-    
-    # blit will draw the text on screen
-    game_window.blit(game_over_surface, game_over_rect)
+    downs_surface = my_font.render('DOWN ' + str(down), True, red)
+    downs_rect = downs_surface.get_rect()
+    downs_rect.midtop = (window_x/2, 300)
+    game_window.blit(downs_surface, downs_rect)
     pygame.display.flip()
-    
     playero_position[0] = playero_position[0]
     playero_position[1] = 300
 
@@ -249,6 +408,7 @@ def game_over():
     
     quit()
 
+speedmeter = 0
 
 while True:
     
@@ -264,6 +424,13 @@ while True:
                 change_to = 'LEFT'
             if event.key == pygame.K_RIGHT:
                 change_to = 'RIGHT'
+            if event.key == pygame.K_SPACE:
+                if speedmeter < 10:
+                    speedmeter = speedmeter + 1
+            if event.key != pygame.K_SPACE:
+                if speedmeter > -2:
+                    speedmeter = speedmeter - 1
+
 
     if change_to == 'UP':
         direction = 'UP'
@@ -276,37 +443,50 @@ while True:
 
     # Moving the playero
     if direction == 'UP':
-        playero_position[1] -= 10
+        playero_position[1] -= 10 + speedmeter
     if direction == 'DOWN':
-        playero_position[1] += 10
+        playero_position[1] += 10 + speedmeter
     if direction == 'LEFT':
-        playero_position[0] -= 10
+        playero_position[0] -= 10 + speedmeter
     if direction == 'RIGHT':
-        playero_position[0] += 10
+        playero_position[0] += 10 + speedmeter
 
     if playero_position[0] == compx_position[0] and playero_position[1] == compx_position[1]:
         if down <= 4:
             downs()
-            down = down + 1
             change_to ='RIGHT'
         else:
             game_over()     
 
-    if playero_position[0] == (compx_position[0] - 5) and playero_position[1] == (compx_position[1] - 5):
+    if playero_position[0] == compx1_position[0] and playero_position[1] == compx1_position[1]:
         if down <= 4:
             downs()
-            down = down + 1
             change_to ='RIGHT'
         else:
-            game_over()  
+            game_over()   
 
-    if playero_position[0] == (compx_position[0] + 5) and playero_position[1] == (compx_position[1] + 5):
+    if playero_position[0] == compx2_position[0] and playero_position[1] == compx2_position[1]:
         if down <= 4:
             downs()
-            down = down + 1
             change_to ='RIGHT'
         else:
-            game_over()  
+            game_over()   
+
+    if playero_position[0] == compx3_position[0] and playero_position[1] == compx3_position[1]:
+        if down <= 4:
+            downs()
+            change_to ='RIGHT'
+        else:
+            game_over()   
+
+    if playero_position[0] == compx4_position[0] and playero_position[1] == compx4_position[1]:
+        if down <= 4:
+            downs()
+            change_to ='RIGHT'
+        else:
+            game_over()   
+
+
 
    
     playero_body.insert(0, list(playero_position))
@@ -502,7 +682,7 @@ while True:
         playero_position[0] = 0
 
     if playero_position[0] > 1300:
-                    
+        speedmeter = 0
         compx = random.randint(0,1)
         compx_position = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
@@ -533,8 +713,67 @@ while True:
     if playero_position[1] > 620:
         playero_position[1] = 620
 
+    if speedmeter > 9:
+        for pos in speedmeterMax_body:
+            pygame.draw.rect(game_window, green,
+                            pygame.Rect(pos[0], pos[1], 10, 10))
+    
+    if speedmeter > -2:
+        for pos in speedmeter1_body:
+            pygame.draw.rect(game_window, green,
+                            pygame.Rect(pos[0], pos[1], 10, 10))
+            
+    if speedmeter > -1:
+        for pos in speedmeter2_body:
+            pygame.draw.rect(game_window, green,
+                            pygame.Rect(pos[0], pos[1], 10, 10))
+            
+    if speedmeter > 0:
+        for pos in speedmeter3_body:
+            pygame.draw.rect(game_window, green,
+                            pygame.Rect(pos[0], pos[1], 10, 10))
+            
+    if speedmeter > 1:
+        for pos in speedmeter4_body:
+            pygame.draw.rect(game_window, green,
+                            pygame.Rect(pos[0], pos[1], 10, 10))
+            
+    if speedmeter > 2:
+        for pos in speedmeter5_body:
+            pygame.draw.rect(game_window, green,
+                            pygame.Rect(pos[0], pos[1], 10, 10))
+            
+    if speedmeter > 3:
+        for pos in speedmeter6_body:
+            pygame.draw.rect(game_window, green,
+                            pygame.Rect(pos[0], pos[1], 10, 10))
+            
+    if speedmeter > 4:
+        for pos in speedmeter7_body:
+            pygame.draw.rect(game_window, green,
+                            pygame.Rect(pos[0], pos[1], 10, 10))
+            
+    if speedmeter > 5:
+        for pos in speedmeter8_body:
+            pygame.draw.rect(game_window, green,
+                            pygame.Rect(pos[0], pos[1], 10, 10))
+            
+    if speedmeter > 6:
+        for pos in speedmeter9_body:
+            pygame.draw.rect(game_window, green,
+                            pygame.Rect(pos[0], pos[1], 10, 10))
+    if speedmeter > 7:
+        for pos in speedmeter10_body:
+            pygame.draw.rect(game_window, green,
+                            pygame.Rect(pos[0], pos[1], 10, 10))
+    if speedmeter > 8:
+        for pos in speedmeter11_body:
+            pygame.draw.rect(game_window, green,
+                            pygame.Rect(pos[0], pos[1], 10, 10))
+
     show_yardline(1, white, 'Arial', 80)
     show_nextyardline(1, white, 'Arial', 80)
+    show_details(1, white, 'Arial', 30)
 
     # Refresh game screen
     pygame.display.update()
