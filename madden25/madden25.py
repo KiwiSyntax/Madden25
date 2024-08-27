@@ -137,8 +137,6 @@ def show_score(choice, color, font, size):
     
     quit()
 
-    
-
 def show_yardline(choice, color, font, size):
   
     yardline_font = pygame.font.SysFont(font, size)
@@ -529,17 +527,14 @@ while True:
         yardline = yardline + 10
         down = 1
 
-
     if playero_position[1] < 0:
         playero_position[1] = 0
 
     if playero_position[1] > 620:
         playero_position[1] = 620
 
-
     show_yardline(1, white, 'Arial', 80)
     show_nextyardline(1, white, 'Arial', 80)
-
 
     # Refresh game screen
     pygame.display.update()
