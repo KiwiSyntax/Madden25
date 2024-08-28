@@ -32,26 +32,32 @@ compx_position = [random.randrange(1, (window_x//10)) * 10,
 compx_body = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
 compx = random.randint(0,1)
+compx_down = 0
 compx1_position = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
 compx1_body = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
 compx1 = random.randint(0,1)
+compx1_down = 0
 compx2_position = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
 compx2_body = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
 compx2 = random.randint(0,1)
+compx2_down = 0
 compx3_position = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
 compx3_body = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
 compx3 = random.randint(0,1)
+compx3_down = 0
 compx4_position = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
 compx4_body = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
 compx4 = random.randint(0,1)
+compx4_down = 0
+
 
 field_lines_body = [[120, 60],
                [120, 70],
@@ -268,56 +274,58 @@ direction = 'RIGHT'
 change_to = direction
 
 # initial score
-score = 0
+score = [0, 0] 
 
-down = 1
+down = 4
 
 yardline = 10
 
+yard = '0'
+
 def show_score(choice, color, font, size):
   
-    # creating font object score_font
-    score_font = pygame.font.SysFont(font, size)
-    
-    # create the display surface object 
-    # score_surface
-    score_surface = score_font.render('TOUCH DOWN Score : ' + str(score), True, color)
-    
-    # create a rectangular object for the text
-    # surface object
+    my_font = pygame.font.SysFont('Arial', 30)
+    score_surface = my_font.render(
+        'SCORE: ' + str(score[0]) + ' vs ' + str(score[1]), True, white)
     score_rect = score_surface.get_rect()
-    
-    # displaying text
+    score_rect.midtop = (1100, 5)
     game_window.blit(score_surface, score_rect)
+    pygame.display.flip()
 
-    time.sleep(3)
-    
-    pygame.quit()
-    
-    quit()
-
-def show_details(choice, color, font, size):
+def show_downs(choice, color, font, size):
   
     my_font = pygame.font.SysFont('Arial', 30)
-    details_surface = my_font.render(
+    if down == 1:
+        down_surface = my_font.render(str(down) + 'ST & ' + yard, True, white)
+    elif down == 2:
+        down_surface = my_font.render(str(down) + 'ND & ' + yard, True, white)
+    elif down == 3:
+        down_surface = my_font.render(str(down) + 'RD & ' + yard, True, white)
+    elif down == 4:
+        down_surface = my_font.render(str(down) + 'TH & ' + yard, True, white)
+
+    down_rect = down_surface.get_rect()
+    down_rect.midtop = (600, 5)
+    game_window.blit(down_surface, down_rect)
+    pygame.display.flip()
+
+def show_speed(choice, color, font, size):
+  
+    my_font = pygame.font.SysFont('Arial', 30)
+    speed_surface = my_font.render(
         'SPEED:' , True, white)
-    
-    details_rect = details_surface.get_rect()
-    details_rect.midtop = (100, 5)
-    game_window.blit(details_surface, details_rect)
+    speed_rect = speed_surface.get_rect()
+    speed_rect.midtop = (100, 5)
+    game_window.blit(speed_surface, speed_rect)
     pygame.display.flip()
 
 
 def show_yardline(choice, color, font, size):
   
     yardline_font = pygame.font.SysFont(font, size)
-    
     yardline_surface = yardline_font.render(str(yardline), True, color)
-    
- 
     yardline_rect = yardline_surface.get_rect()
     yardline_rect.midtop = (140, 300)
-
     game_window.blit(yardline_surface, yardline_rect)
 
 def show_nextyardline(choice, color, font, size):
@@ -368,7 +376,15 @@ def show_nextyardline(choice, color, font, size):
 def downs():
 
     my_font = pygame.font.SysFont('Arial', 70)
-    downs_surface = my_font.render('DOWN ' + str(down), True, red)
+    if down == 1:
+        downs_surface = my_font.render(str(down) + 'ST DOWN', True, red)
+    elif down == 2:
+         downs_surface = my_font.render(str(down) + 'ND DOWN', True, red)
+    elif down == 3:
+         downs_surface = my_font.render(str(down) + 'RD DOWN', True, red)
+    elif down == 4:
+         downs_surface = my_font.render(str(down) + 'TH DOWN', True, red)
+       
     downs_rect = downs_surface.get_rect()
     downs_rect.midtop = (window_x/2, 300)
     game_window.blit(downs_surface, downs_rect)
@@ -380,39 +396,23 @@ def downs():
 
 def game_over():
   
-    # creating font object my_font
     my_font = pygame.font.SysFont('times new roman', 50)
-    
-    # creating a text surface on which text 
-    # will be drawn
     game_over_surface = my_font.render(
         'Your Score is : ' + str(score), True, red)
-    
-    # create a rectangular object for the text 
-    # surface object
     game_over_rect = game_over_surface.get_rect()
-    
-    # setting position of the text
     game_over_rect.midtop = (window_x/2, window_y/4)
-    
-    # blit will draw the text on screen
     game_window.blit(game_over_surface, game_over_rect)
     pygame.display.flip()
-    
     playero_position[0] = playero_position[0]
     playero_position[1] = 300
-
     time.sleep(2)
-    
     pygame.quit()
-    
     quit()
 
 speedmeter = 0
 
 while True:
     
- 
     # handling key events
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
@@ -430,7 +430,6 @@ while True:
             if event.key != pygame.K_SPACE:
                 if speedmeter > -2:
                     speedmeter = speedmeter - 1
-
 
     if change_to == 'UP':
         direction = 'UP'
@@ -453,35 +452,50 @@ while True:
 
     if playero_position[0] == compx_position[0] and playero_position[1] == compx_position[1]:
         if down <= 4:
-            downs()
+            if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:
+                downs()
+                compx_down = 1
+                down = down + 1
             change_to ='RIGHT'
         else:
             game_over()     
 
     if playero_position[0] == compx1_position[0] and playero_position[1] == compx1_position[1]:
         if down <= 4:
-            downs()
+            if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:
+                downs()
+                compx1_down = 1
+                down = down + 1
             change_to ='RIGHT'
         else:
             game_over()   
 
     if playero_position[0] == compx2_position[0] and playero_position[1] == compx2_position[1]:
         if down <= 4:
-            downs()
+            if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1:
+                downs()
+                compx2_down = 1
+                down = down + 1
             change_to ='RIGHT'
         else:
             game_over()   
 
     if playero_position[0] == compx3_position[0] and playero_position[1] == compx3_position[1]:
         if down <= 4:
-            downs()
+            if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1:
+                downs()
+                compx3_down = 1
+                down = down + 1
             change_to ='RIGHT'
         else:
             game_over()   
 
     if playero_position[0] == compx4_position[0] and playero_position[1] == compx4_position[1]:
         if down <= 4:
-            downs()
+            if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1:
+                downs()
+                compx4_down = 1
+                down = down + 1
             change_to ='RIGHT'
         else:
             game_over()   
@@ -773,7 +787,9 @@ while True:
 
     show_yardline(1, white, 'Arial', 80)
     show_nextyardline(1, white, 'Arial', 80)
-    show_details(1, white, 'Arial', 30)
+    show_speed(1, white, 'Arial', 30)
+    show_downs(1, white, 'Arial', 30)
+    show_score(1, white, 'Arial', 30)
 
     # Refresh game screen
     pygame.display.update()
